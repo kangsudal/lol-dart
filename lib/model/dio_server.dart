@@ -23,8 +23,8 @@ class Server {
       response = await dio.get("$_API_PREFIX$_API_SUFFIX_CHAMPION");
 
       dynamic data =response.data["data"];
-      print(data.runtimeType);
-      print(parseChampions(data));
+//      print(parseChampions(data));
+      return parseChampions(data);
 //      Champion anivia = Champion.fromJson(response.data["data"]["Anivia"]);
 //      print(anivia.partype);
     } catch (e) {
