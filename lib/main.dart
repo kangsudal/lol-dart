@@ -1,6 +1,5 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
+import 'package:limitless_oasis/model/dio_server.dart';
 
 void main() {
   runApp(MyApp());
@@ -47,6 +46,16 @@ class MyHomePage extends StatelessWidget {
                 onDoubleTap: (){
                   print("double click");
                   print("show menu: 탑선호 챔피언/정글선호 챔피언/미드선호 챔피언/원딜선호 챔피언/서폿선호 챔피언");
+                  Future<String> latestVersion = server.fetchLatestVersion();
+                  latestVersion.then((val) {
+                    // int가 나오면 해당 값을 출력
+                    print('val: $val');
+                  }).catchError((error) {
+                    // error가 해당 에러를 출력
+                    print('error: $error');
+                  });
+
+                  print('기다리는 중');
                 },
                 child: Container(
                   child:
