@@ -43,3 +43,4 @@ class Server {
   }
 }
 Server server = Server();
+Future<String> latestVersion = server.fetchLatestVersion();
