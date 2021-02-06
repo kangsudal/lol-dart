@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:limitless_oasis/widget/championChart.dart';
 import 'package:limitless_oasis/widget/championGridView.dart';
 import 'package:limitless_oasis/widget/versionText.dart';
 
@@ -63,7 +64,7 @@ class MyHomePage extends StatelessWidget {
               body: TabBarView(
                 children: [
                   ChampionGridView(),
-                  Container(),
+                  ChampionChart(),
                   Container(),
                   Container(),
                   Container(),
