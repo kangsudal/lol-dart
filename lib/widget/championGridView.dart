@@ -1,7 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:limitless_oasis/model/champion.dart';
 import 'package:limitless_oasis/model/dio_server.dart';
-//todo: 1. 한글순서정렬, 2. 트페 기좀 세워주기 3. 이미지 캐시
+//todo: 1. 한글순서정렬, 2. 트페 기좀 세워주기
 
 class ChampionGridView extends StatelessWidget {
   int champion_num = 3;
@@ -57,9 +58,12 @@ class ChampionGridView extends StatelessWidget {
             child: Column(
               children: [
                 Expanded(
-                    child: Image.network(
-                  'https://ddragon.leagueoflegends.com/cdn/$version/img/champion/${champions[index].id}.png',
-                )),
+                  child: CachedNetworkImage(
+                    imageUrl:'https://ddragon.leagueoflegends.com/cdn/$version/img/champion/${champions[index].id}.png',
+                    placeholder: (context, url) => CircularProgressIndicator(),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
+                  ),
+                ),
                 Text(
                   "${champions[index].name}",
                 ),
