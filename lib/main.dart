@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:limitless_oasis/widget/championChart.dart';
+import 'package:limitless_oasis/widget/championChart2.dart';
+import 'package:limitless_oasis/widget/championChart3.dart';
 import 'package:limitless_oasis/widget/championGridView.dart';
 import 'package:limitless_oasis/widget/versionText.dart';
 
@@ -65,8 +67,8 @@ class MyHomePage extends StatelessWidget {
                 children: [
                   ChampionGridView(),
                   ChampionChart(),
-                  Container(),
-                  Container(),
+                  ScatterPlotComboLineChart.withRandomData(),
+                  LineChartSample2(),
                   Container(),
                   Container(),
                 ],
