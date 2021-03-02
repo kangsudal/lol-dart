@@ -1,0 +1,47 @@
+import 'package:flutter/material.dart';
+
+Scaffold pick_menu_screen(){
+  return Scaffold(
+    body: ListView(
+      children:[
+        Text("먹고싶은 메뉴를 고르세요"),
+//        GridView(),
+        Text("로제파스타"),
+        Text("봉골레"),
+        Text("크림스파게티"),
+        Text("삼겹살"),
+        Text("된장찌개"),
+        Text("계란볶음밥"),
+        Text("짜장면"),
+        Text("짬뽕"),
+        Text("후라이드치킨"),
+        Text("양념치킨"),
+        Text("연어초밥"),
+        Text("마늘장아찌"),
+        Text("명이나물"),
+        Text("돈나물"),
+        Text("김&밥"),
+        Text("김밥"),
+        Text("순대국밥"),
+        Text("깍두기"),
+        Text("파김치"),
+        Text("잔치국수"),
+        Text("베트남쌀국수"),
+        Text("만두"),
+        Text("쫄면"),
+        Text("홍합탕"),
+        Text("고리곤졸라피자"),
+        Text("쭈꾸미볶음"),
+        Text("날치알밥"),
+        Text("치즈라면"),
+        Text("족발"),
+        Text("사리곰탕"),
+        Text("더먹고싶은거 있으면 목록에 추가하쇼"),
+        Text("두부"),
+        Text("버섯"),
+        Text("샤브샤브"),
+        Text("마라탕"),
+      ],
+    ),
+  );
+}

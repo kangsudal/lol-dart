@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:limitless_oasis/screen/map_screen.dart';
+import 'package:limitless_oasis/screen/pick_menu_screen.dart';
 import 'package:limitless_oasis/screen/pick_screen.dart';
 
 void main() {
@@ -26,7 +27,8 @@ class MyHomePage extends StatelessWidget {
     double screen_width = screen_size.width;
     double screen_height = screen_size.height;
 
-    return map_screen(screen_width,screen_height);
+    return pick_menu_screen();
+//    return map_screen(screen_width,screen_height);
 //    return pick_screen(screen_width,screen_height);
   }
 
