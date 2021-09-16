@@ -10,8 +10,8 @@ Widget pick_screen(double screen_width, double screen_height) {
     backgroundColor: Colors.blue,
     body: Center(
       child: Container(
-        width: screen_width * 0.5,
-        height: screen_height * 0.6,
+        width: screen_width * 0.9,
+        height: screen_height * 0.8,
         child: DefaultTabController(
           length: 6,
           child: Scaffold(
@@ -42,8 +42,8 @@ Widget pick_screen(double screen_width, double screen_height) {
             ),
             body: TabBarView(
               children: [
-                ChampionGridView(),
                 ChampionChart(),
+                ChampionGridView(),
                 ScatterPlotComboLineChart.withRandomData(),
                 LineChartSample2(),
                 Container(),

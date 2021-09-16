@@ -27,9 +27,9 @@ class MyHomePage extends StatelessWidget {
     double screen_width = screen_size.width;
     double screen_height = screen_size.height;
 
-    return pick_menu_screen();
+//    return pick_menu_screen();
 //    return map_screen(screen_width,screen_height);
-//    return pick_screen(screen_width,screen_height);
+    return pick_screen(screen_width,screen_height);
   }
 
 
