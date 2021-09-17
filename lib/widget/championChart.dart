@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:limitless_oasis/model/champion.dart';
@@ -32,7 +33,6 @@ class _ChampionChartState extends State {
             return const Text('Nothing to show');
           }
           List<Champion> champions = snapshot.data;
-          print(champions);
           return Stack(
             children: List.generate(
               champions.length,
@@ -46,10 +46,16 @@ class _ChampionChartState extends State {
                 double position_y = -1 + y * 0.2;
 //              0   1    2   3     4   5   6   7   8    9    10 : 10
 //              -1 -0.8 -0.6 -0.4 -0.2  0  0.2 0.4 0.6  0.8    1
-
                 return Align(
                   alignment: Alignment(position_x, position_y),
-                  child: Text(champion.name),
+                  child: CachedNetworkImage(
+                    width: 30,
+                    height: 30,
+                    imageUrl:'https://ddragon.leagueoflegends.com/cdn/$version/img/champion/${champions[index].id}.png',
+                    placeholder: (context, url) => CircularProgressIndicator(),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
+                  ),
+                  //Text(champion.name),
                 );
               },
             ),
