@@ -9,7 +9,7 @@ String version = "11.3.1";
 String _API_SUFFIX_CHAMPION;
 
 class Server {
-  Future<void> getChampion() async {
+  Future<List<Champion>> getChampion() async {
     try {
       version = await fetchLatestVersion();
     } catch (e) {
