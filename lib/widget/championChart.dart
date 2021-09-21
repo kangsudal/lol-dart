@@ -11,7 +11,9 @@ class ChampionChart extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _ChampionChartState();
 }
+
 enum WhyFarther { harder, smarter, selfStarter, tradingCharter }
+
 class _ChampionChartState extends State {
   Server server = Server();
 
@@ -140,32 +142,32 @@ class _ChampionChartState extends State {
           deduplicatedWidgetList.add(
             Align(
               alignment: Alignment(p.x, p.y),
-              child:PopupMenuButton<WhyFarther>(
-                onSelected: (WhyFarther result) { setState(() { _selection = result; }); },
-                itemBuilder: (BuildContext context) => <PopupMenuEntry<WhyFarther>>[
-                  const PopupMenuItem<WhyFarther>(
+              child: PopupMenuButton<WhyFarther>(
+                onSelected: (WhyFarther result) {
+                  setState(() {
+                    _selection = result;
+                  });
+                },
+                itemBuilder: (BuildContext context) => List.generate(
+                  champions.length,
+                  (index) => PopupMenuItem<WhyFarther>(
                     value: WhyFarther.harder,
-                    child: Text('Working a lot harder'),
-                  ),
-                  const PopupMenuItem<WhyFarther>(
-                    value: WhyFarther.smarter,
-                    child: Text('Being a lot smarter'),
-                  ),
-                  const PopupMenuItem<WhyFarther>(
-                    value: WhyFarther.selfStarter,
-                    child: Text('Being a self-starter'),
-                  ),
-                  const PopupMenuItem<WhyFarther>(
-                    value: WhyFarther.tradingCharter,
-                    child: Text('Placed in charge of trading charter'),
-                  ),
-                ],
-                child:
-                    CircleAvatar(
-                      child: Text(
-                        champions.length.toString(),
-                      ),
+                    child: CachedNetworkImage(
+                      width: 30, //size,//size * size * 0.5,
+                      height: 30, //size,//size * size * 0.5,
+                      imageUrl:
+                          'https://ddragon.leagueoflegends.com/cdn/$version/img/champion/${champions[index].id}.png',
+                      placeholder: (context, url) =>
+                          CircularProgressIndicator(),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
                     ),
+                  ),
+                ),
+                child: CircleAvatar(
+                  child: Text(
+                    champions.length.toString(),
+                  ),
+                ),
               ),
             ),
           );
