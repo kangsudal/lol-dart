@@ -11,9 +11,11 @@ class ChampionChart extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _ChampionChartState();
 }
-
+enum WhyFarther { harder, smarter, selfStarter, tradingCharter }
 class _ChampionChartState extends State {
   Server server = Server();
+
+  WhyFarther _selection;
 
   @override
   Widget build(BuildContext context) {
@@ -113,11 +115,13 @@ class _ChampionChartState extends State {
       }
     }
 //    print(duplicatedLocationChampionsCheckMap);
+    //중복제거된 리스트 만들기
     duplicatedLocationChampionsCheckMap.forEach(
       (key, value) {
 //        print("key:$key, value:$value");
         Point p = key;
         List<Champion> champions = value;
+        //중복체크
         if (champions.length == 1) {
           deduplicatedWidgetList.add(
             Align(
@@ -136,15 +140,32 @@ class _ChampionChartState extends State {
           deduplicatedWidgetList.add(
             Align(
               alignment: Alignment(p.x, p.y),
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  shape: CircleBorder(),
-//                  padding: EdgeInsets.all(30),
-                ),
-                child: Text(
-                  champions.length.toString(),
-                ),
+              child:PopupMenuButton<WhyFarther>(
+                onSelected: (WhyFarther result) { setState(() { _selection = result; }); },
+                itemBuilder: (BuildContext context) => <PopupMenuEntry<WhyFarther>>[
+                  const PopupMenuItem<WhyFarther>(
+                    value: WhyFarther.harder,
+                    child: Text('Working a lot harder'),
+                  ),
+                  const PopupMenuItem<WhyFarther>(
+                    value: WhyFarther.smarter,
+                    child: Text('Being a lot smarter'),
+                  ),
+                  const PopupMenuItem<WhyFarther>(
+                    value: WhyFarther.selfStarter,
+                    child: Text('Being a self-starter'),
+                  ),
+                  const PopupMenuItem<WhyFarther>(
+                    value: WhyFarther.tradingCharter,
+                    child: Text('Placed in charge of trading charter'),
+                  ),
+                ],
+                child:
+                    CircleAvatar(
+                      child: Text(
+                        champions.length.toString(),
+                      ),
+                    ),
               ),
             ),
           );
